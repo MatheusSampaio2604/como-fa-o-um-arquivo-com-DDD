@@ -1,0 +1,37 @@
+﻿na Pasta APP
+
+devera conter arquivos com nomenclatura		'"arquivo"App'
+
+cada arquivoApp deve conter:
+
+    public class "arquivoApp" : App<"arquivoViewModel", "nomeModel">, I"arquivo"App
+    {
+        public "arquivoApp"(ILogger<arquivoApp> logger, 'I"nomearquivo"Repository' '"nomearquivo"Repository') : base(logger, '"nomearquivo"Repository')
+        {
+
+        }
+    }
+
+
+aqui devera conter tambem quaisquer manupilações com override
+
+no arquivoApp escolhido eu uso:
+
+    public class arquivoApp : App<arquivoViewModel, model>, I'arquivo'App
+    {
+        private readonly IProjetoRepository _projetoRepository;
+        private readonly IUsuarioProjetoRepository _usuarioProjetoRepository;
+        private readonly DataContext _dataContext;
+        private readonly IAnexosRepository _anexosRepository;
+
+        public ProjetoApp(ILogger<ProjetoApp> logger, DataContext dataContext, IAnexosRepository anexosRepository, IUsuarioProjetoRepository usuarioProjetoRepository, IProjetoRepository projetoRepository) : base(logger, projetoRepository)
+        {
+            _dataContext = dataContext;
+            _projetoRepository = projetoRepository;
+            _usuarioProjetoRepository = usuarioProjetoRepository;
+            _anexosRepository = anexosRepository;
+        }
+
+        public override async Task<Projeto> CreateAsync(ProjetoViewModel projetoViewModel)
+        {
+        }
